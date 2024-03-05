@@ -47,18 +47,20 @@ Moer-lite的框架基于Moer主干：https://github.com/NJUCG/Moer .
   
 - 2023-3-18
   lab1有关内容更新 具体请看实验手册
-
-- 2023-4-18
-  更新了lab2，新增代码以及实验手册请切换到本仓库lab-2分支进行查看
-  添加了lab0的手册
   
-- 2023-10-6
+- 2023-4-18
 
-  修正了lab2对于微表面模型公式中，G项的描述错误
+  添加lab2：
 
-## 纠错
-- Parallelogram.cpp 中的 Parallelogram::uniformSampleOnSurface方法，其中 area 应为 `cross(edge0, edge1).length()`， 即去掉.5f的系数（感谢苏尧同学的指正）
+  1. Phong 材质
+  2. OrenNayar材质
+  3. Conductor材质
+  4. Dielectric材质
+  5. GGX和Beckmann 分布
+  
+- 2023-4-46
 
+  修复了lab2中框架Phong模型和Oren-Nayar模型的参数问题
 ## TODO
 - 对mesh和sphere实现表面采样（目前只有parallelogram可以配置为面光源）
 - 加速环境光的采样
