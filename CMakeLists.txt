@@ -23,48 +23,53 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/target/bin)
 
 add_subdirectory(./externals)
 
-add_executable(Moer
-  src/main.cpp
+set(sources_list)
+list(APPEND sources_list src/main.cpp)
+list(APPEND sources_list src/CoreLayer/Math/Transform.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/AABB.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/Acceleration.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/EmbreeBVH.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/Linear.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/Octree.cpp)
+list(APPEND sources_list src/FunctionLayer/Integrator/NormalIntegrator.cpp)
+list(APPEND sources_list src/FunctionLayer/Integrator/DirectIntegrator.cpp)
+list(APPEND sources_list src/FunctionLayer/Integrator/PathIntegrator.cpp)
+list(APPEND sources_list src/FunctionLayer/Integrator/WhittedIntegrator.cpp)
+list(APPEND sources_list src/FunctionLayer/Camera/Camera.cpp)
+list(APPEND sources_list src/FunctionLayer/Camera/Pinhole.cpp)
+list(APPEND sources_list src/FunctionLayer/Scene/Scene.cpp)
+list(APPEND sources_list src/FunctionLayer/Light/SpotLight.cpp)
+list(APPEND sources_list src/FunctionLayer/Light/AreaLight.cpp)
+list(APPEND sources_list src/FunctionLayer/Light/EnvironmentLight.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Shape.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Triangle.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Cube.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Sphere.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Parallelogram.cpp)
+list(APPEND sources_list src/FunctionLayer/Texture/NormalTexture.cpp)
+list(APPEND sources_list src/FunctionLayer/Texture/ImageTexture.cpp)
+list(APPEND sources_list src/FunctionLayer/Texture/Texture.cpp)
+list(APPEND sources_list src/FunctionLayer/Texture/Mipmap.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Matte.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Mirror.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Material.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Phong.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Conductor.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/Dielectric.cpp)
+list(APPEND sources_list src/FunctionLayer/Material/OrenNayar.cpp)
+list(APPEND sources_list src/FunctionLayer/Sampler/IndependentSampler.cpp)
+list(APPEND sources_list src/ResourceLayer/Image.cpp)
+list(APPEND sources_list src/ResourceLayer/Mesh.cpp)
+list(APPEND sources_list src/ResourceLayer/FileUtil.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Disk.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Cone.cpp)
+list(APPEND sources_list src/FunctionLayer/Shape/Cylinder.cpp)
+list(APPEND sources_list src/FunctionLayer/Integrator/UVIntegrator.cpp)
+list(APPEND sources_list src/FunctionLayer/Acceleration/BVH.cpp)
 
-  src/CoreLayer/Math/Transform.cpp
+source_group(TREE ${PROJECT_SOURCE_DIR} FILES ${sources_list})
 
-  src/FunctionLayer/Acceleration/AABB.cpp
-  src/FunctionLayer/Acceleration/Acceleration.cpp
-  src/FunctionLayer/Acceleration/EmbreeBVH.cpp
-  src/FunctionLayer/Acceleration/Linear.cpp
-  src/FunctionLayer/Acceleration/Octree.cpp
-
-  src/FunctionLayer/Integrator/NormalIntegrator.cpp
-  src/FunctionLayer/Integrator/DirectIntegrator.cpp
-  src/FunctionLayer/Integrator/PathIntegrator.cpp
-  src/FunctionLayer/Integrator/WhittedIntegrator.cpp
-  src/FunctionLayer/Camera/Camera.cpp
-  src/FunctionLayer/Camera/Pinhole.cpp
-  src/FunctionLayer/Scene/Scene.cpp
-  src/FunctionLayer/Light/SpotLight.cpp
-  src/FunctionLayer/Light/AreaLight.cpp
-  src/FunctionLayer/Light/EnvironmentLight.cpp
-  src/FunctionLayer/Shape/Shape.cpp
-  src/FunctionLayer/Shape/Triangle.cpp
-  src/FunctionLayer/Shape/Cube.cpp
-  src/FunctionLayer/Shape/Sphere.cpp
-  src/FunctionLayer/Shape/Parallelogram.cpp
-  src/FunctionLayer/Texture/NormalTexture.cpp
-  src/FunctionLayer/Texture/ImageTexture.cpp
-  src/FunctionLayer/Texture/Texture.cpp
-  src/FunctionLayer/Texture/Mipmap.cpp
-  src/FunctionLayer/Material/Matte.cpp
-  src/FunctionLayer/Material/Mirror.cpp
-  src/FunctionLayer/Material/Material.cpp
-  src/FunctionLayer/Material/Phong.cpp
-  src/FunctionLayer/Material/Conductor.cpp
-  src/FunctionLayer/Material/Dielectric.cpp
-  src/FunctionLayer/Material/OrenNayar.cpp
-  src/FunctionLayer/Sampler/IndependentSampler.cpp
-  src/ResourceLayer/Image.cpp
-  src/ResourceLayer/Mesh.cpp
-  src/ResourceLayer/FileUtil.cpp
-  src/FunctionLayer/Shape/Disk.cpp src/FunctionLayer/Shape/Disk.h src/FunctionLayer/Shape/Cone.cpp src/FunctionLayer/Shape/Cone.h src/FunctionLayer/Shape/Cylinder.cpp src/FunctionLayer/Shape/Cylinder.h src/FunctionLayer/Integrator/UVIntegrator.cpp src/FunctionLayer/Integrator/UVIntegrator.h src/FunctionLayer/Acceleration/BVH.cpp src/FunctionLayer/Acceleration/BVH.h)
+add_executable(Moer ${sources_list})
 
 target_include_directories(Moer PUBLIC ./externals)
 target_include_directories(Moer PUBLIC ./src)

@@ -10,6 +10,13 @@ public:
                      const Vector2f &alpha) const noexcept override {
     // TODO
     // 根据公式即可
+    float cos = dot(whLocal,(0,0,1));
+    if(cos <=0.0f){
+        return 0.f;
+    }
+    float tan = fm::sqrt(1-cos*cos)/cos;
+
+    float D = fm::exp(-tan);
     return 0.f;
   }
   // tips:
@@ -19,6 +26,7 @@ public:
     // TODO
     // 根据公式即可
     // tips: return getG1(wo) * getG1(wi);
+    return 0.0f;
   }
   virtual float pdf(const Vector3f &woLocal, const Vector3f &whLocal,
                     const Vector2f &alpha) const noexcept override {
